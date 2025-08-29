@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Smart Invest | الاستثمار الذكي السعودي</title>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<style>
+  :root {
+    --green-main: #006c4c;
+    --green-dark: #004d36;
+    --gold: #c8a165;
+    --background-light: #f9f9f9;
+    --text-dark: #1e1e1e;
+    --footer-bg: #002920;
+    --pattern-color: #c8a165;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: "Almarai", sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    scroll-behavior: smooth;
+    line-height: 1.6;
+    direction: rtl;
+  }
+  nav {
+    background-color: rgba(0, 77, 54, 0.9);
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    color: white;
+    font-weight: 700;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: background-color 0.3s ease;
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  nav a:hover {
+    color: var(--gold);
+  }
+  nav .socials a {
+    margin: 0 8px;
+    font-size: 18px;
+  }
+  .lang-switch {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 5px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 12px;
+    transition: background-color 0.3s;
+    user-select: none;
+  }
+  .lang-switch:hover {
+    background-color: var(--gold);
+    color: var(--green-dark);
+    border-color: var(--gold);
+  }
+  header {
+    background: linear-gradient(to left, var(--green-main), var(--green-dark));
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 100px;
+    height: 100px;
+    background:
+      repeating-conic-gradient(var(--pattern-color) 0deg 10deg, transparent 10deg 20deg);
+    border-radius: 50%;
+    opacity: 0.15;
+    z-index: 0;
+  }
+  header h1 {
+    font-size: 42px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  header p {
+    font-size: 20px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 1;
+  }
+  .hero {
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Riyadh_Skyline.jpg/1280px-Riyadh_Skyline.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 140px 20px 100px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 6px,
+        var(--pattern-color) 6px,
+        var(--pattern-color) 7px
+      );
+    opacity: 0.12;
+    pointer-events: none;
+  }
+  .hero h2 {
+    font-size: 44px;
+    margin-bottom: 16px;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: inline-block;
+    padding: 20px 36px;
+    border-radius: 12px;
+    animation: fadeInDown 1.5s ease;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    position: relative;
+    z-index: 1;
+  }
+  .hero p {
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 14px 36px;
+    display: inline-block;
+    border-radius: 10px;
+    animation: fadeInUp 2s ease;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #f0f0f0;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-shadow: 0 0 4px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 1;
+  }
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--gold);
+    color: white;
+    padding: 14px 40px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 30px;
+    transition: background-color 0.3s;
+    font-size: 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .btn-primary:hover {
+    background-color: #a47745;
+  }
+  section {
+    padding: 70px 20px;
+    text-align: center;
+    position: relative;
+  }
+  section h2 {
+    color: var(--green-main);
+    margin-bottom: 28px;
+    font-size: 32px;
+    font-weight: 700;
+    position: relative;
+  }
+  section h2::after {
+    content: "";
+    width: 60px;
+    height: 6px;
+    background: var(--gold);
+    display: block;
+    margin: 8px auto 0;
+    border-radius: 5px;
+    box-shadow: 0 0 8px var(--gold);
+  }
+  section p {
+    max-width: 720px;
+    margin: 0 auto 30px;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--text-dark);
+  }
+  ul.invest-areas {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    list-style-type: none;
+    padding: 0;
+    font-weight: 600;
+  }
+  ul.invest-areas li {
+    background: white;
+    margin-bottom: 18px;
+    padding: 18px 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    text-align: right;
+    cursor: default;
+    transition: transform 0.3s ease, background-color 0.3s, color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  ul.invest-areas li:hover {
+    transform: translateX(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background-color: var(--gold);
+    color: var(--green-dark);
+  }
+  ul.invest-areas li::before {
+    content: "✦";
+    color: var(--gold);
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+  }
+  table.subscriptions {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    border-collapse: collapse;
+    font-weight: 600;
+  }
+  table.subscriptions th,
+  table.subscriptions td {
+    border: 1px solid var(--green-dark);
+    padding: 15px 20px;
+    font-size: 18px;
+  }
+  table.subscriptions th {
+    background-color: var(--green-main);
+    color: white;
+  }
+  table.subscriptions tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  /* Stocks section */
+  #stocks .stock-card {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+    cursor: default;
+  }
+  #stocks .stock-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+  }
+  #stocks .stock-name {
+    font-size: 22px;
+    color: var(--green-dark);
+  }
+  #stocks .stock-price {
+    font-size: 20px;
+    color: var(--gold);
+  }
+  #stocks .stock-change {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  #stocks .stock-change.positive {
+    color: #2ecc71;
+  }
+  #stocks .stock-change.negative {
+    color: #e74c3c;
+  }
+  footer {
+    background-color: var(--footer-bg);
+    color: white;
+    text-align: center;
+    padding: 22px 16px;
+    margin-top: 60px;
+    font-size: 15px;
+    font-weight: 500;
+    user-select: none;
+  }
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav {
+      flex-wrap: wrap;
+      padding: 12px 16px;
+      font-size: 14px;
+    }
+    nav a {
+      margin: 6px 8px;
+    }
+    header h1 {
+      font-size: 28px;
+    }
+    header p {
+      font-size: 16px;
+    }
+    .hero {
+      padding: 120px 16px 80px;
+    }
+    .hero h2 {
+      font-size: 28px;
+      padding: 10px 16px;
+    }
+    .hero p {
+      font-size: 16px;
+      padding: 8px 14px;
+    }
+    .btn-primary {
+      padding: 10px 28px;
+      font-size: 16px;
+    }
+    section h2 {
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+    section p {
+      font-size: 16px;
+      max-width: 100%;
+    }
+    ul.invest-areas li {
+      font-size: 18px;
+      padding: 14px 18px;
+    }
+    table.subscriptions th,
+    table.subscriptions td {
+      font-size: 16px;
+      padding: 10px 14px;
+    }
+    #stocks .stock-card {
+      flex-direction: column;
+      gap: 8px;
+      font-size: 16px;
+    }
+    #stocks .stock-name {
+      font-size: 18px;
+    }
+    #stocks .stock-price {
+      font-size: 16px;
+    }
+    #stocks .stock-change {
+      font-size: 14px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div>
+    <a href="#home" class="nav-link" data-key="home">الرئيسية</a>
+    <a href="#areas" class="nav-link" data-key="areas">المناطق الاستثمارية</a>
+    <a href="#plans" class="nav-link" data-key="plans">الاشتراكات</a>
+    <a href="#stocks" class="nav-link" data-key="stocks">تحليلات الأسهم</a>
+    <a href="#contact" class="nav-link" data-key="contact">تواصل معنا</a>
+  </div>
+  <div>
+    <a href="https://twitter.com" target="_blank" title="تويتر">🐦</a>
+    <a href="https://instagram.com" target="_blank" title="انستقرام">📸</a>
+    <a href="https://youtube.com" target="_blank" title="يوتيوب">▶️</a>
+    <button class="lang-switch" id="lang-switch">English</button>
+  </div>
+</nav>
+
+<header id="home" data-aos="fade-down">
+  <h1 data-key="headerTitle">Smart Invest | الاستثمار الذكي السعودي</h1>
+  <p data-key="headerSubtitle">ابدأ رحلتك الاستثمارية بثقة 🇸🇦</p>
+</header>
+
+<div class="hero" data-aos="fade-up">
+  <h2 data-key="heroTitle">استثمر في المستقبل، بثقة سعودية</h2>
+  <p data-key="heroDesc">حلول ذكية للاستثمار في العقارات، المشاريع، والأسهم حسب رأس مالك والمنطقة</p>
+  <a href="#plans" class="btn-primary" data-key="heroBtn">ابدأ الآن</a>
+</div>
+
+<section id="areas" data-aos="fade-up">
+  <h2 data-key="areasTitle">المناطق الاستثمارية</h2>
+  <ul class="invest-areas" id="areas-list">
+    <li data-key="area1">الرياض - مشاريع سكنية وتجارية</li>
+    <li data-key="area2">نيوم - تقنيات المستقبل والسياحة</li>
+    <li data-key="area3">جدة - القطاع البحري والضيافة</li>
+    <li data-key="area4">الدمام - الصناعة والطاقة</li>
+    <li data-key="area5">مكة المكرمة - مشاريع عمرانية وخدمية</li>
+    <li data-key="area6">الخبر - استثمارات صناعية وتجارية</li>
+  </ul>
+</section>
+
+<section id="plans" data-aos="fade-up">
+  <h2 data-key="plansTitle">الاشتراكات والخطط</h2>
+  <table class="subscriptions" aria-label="Subscription Plans">
+    <thead>
+      <tr>
+        <th data-key="planHeader">الخطة</th>
+        <th data-key="priceHeader">السعر</th>
+        <th data-key="featuresHeader">الميزات</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-key="basicPlan">أساسية</td>
+        <td data-key="basicPrice">19 ريال/شهر</td>
+        <td data-key="basicFeatures">تحليل منطقة واحدة</td>
+      </tr>
+      <tr>
+        <td data-key="advancedPlan">متقدمة</td>
+        <td data-key="advancedPrice">49 ريال/شهر</td>
+        <td data-key="advancedFeatures">تحليلات + توصيات أسهم</td>
+      </tr>
+      <tr>
+        <td data-key="proPlan">احترافية</td>
+        <td data-key="proPrice">99 ريال/شهر</td>
+        <td data-key="proFeatures">مستشار مباشر + تقارير مفصلة</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="stocks" data-aos="fade-up">
+  <h2 data-key="stocksTitle">تحليلات الأسهم</h2>
+  <div class="stock-card">
+    <div class="stock-name">شركة أرامكو (2222)</div>
+    <div class="stock-price">35.50 ريال</div>
+    <div class="stock-change positive">+1.25%</div>
+  </div>
+  <div class="stock-card">
+    <div class="stock-name">شركة سابك (2010)</div>
+    <div class="stock-price">110.20 ريال</div>
+    <div class="stock-change negative">-0.85%</div>
+  </div>
+  <div class="stock-card">
+    <div class="stock-name">شركة الاتصالات (7010)</div>
+    <div class="stock-price">120.75 ريال</div>
+    <div class="stock-change positive">+0.65%</div>
+  </div>
+</section>
+
+<section id="contact" data-aos="fade-up">
+  <h2 data-key="contactTitle">تواصل معنا</h2>
+  <p data-key="contactDesc">هل لديك استفسار أو تريد استشارة استثمارية؟ تواصل معنا عبر:</p>
+  <p>📧 <span data-key="emailLabel">البريد الإلكتروني</span>: info@smartinvest.sa</p>
+  <p>📞 <span data-key="phoneLabel">الهاتف</span>: 9200 123 456</p>
+  <p>🌐 <span data-key="socialLabel">عبر شبكات التواصل الاجتماعي</span>:</p>
+  <p>
+    <a href="https://twitter.com" target="_blank" title="تويتر">🐦 تويتر</a> | 
+    <a href="https://instagram.com" target="_blank" title="انستقرام">📸 انستقرام</a> | 
+    <a href="https://youtube.com" target="_blank" title="يوتيوب">▶️ يوتيوب</a>
+  </p>
+</section>
+
+<footer>
+  &copy; 2025 Smart Invest. جميع الحقوق محفوظة.<br />
+  تصميم احترافي على الطراز السعودي | يدعم التحول الوطني 2030
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1100,
+    once: true,
+  });
+
+  // ترجمات النصوص العربية والإنجليزية
+  const translations = {
+    ar: {
+      home: "الرئيسية",
+      areas: "المناطق الاستثمارية",
+      plans: "الاشتراكات",
+      stocks: "تحليلات الأسهم",
+      contact: "تواصل معنا",
+      headerTitle: "Smart Invest | الاستثمار الذكي السعودي",
+      headerSubtitle: "ابدأ رحلتك الاستثمارية بثقة 🇸🇦",
+      heroTitle: "استثمر في المستقبل، بثقة سعودية",
+      heroDesc: "حلول ذكية للاستثمار في العقارات، المشاريع، والأسهم حسب رأس مالك والمنطقة",
+      heroBtn: "ابدأ الآن",
+      areasTitle: "المناطق الاستثمارية",
+      area1: "الرياض - مشاريع سكنية وتجارية",
+      area2: "نيوم - تقنيات المستقبل والسياحة",
+      area3: "جدة - القطاع البحري والضيافة",
+      area4: "الدمام - الصناعة والطاقة",
+      area5: "مكة المكرمة - مشاريع عمرانية وخدمية",
+      area6: "الخبر - استثمارات صناعية وتجارية",
+      plansTitle: "الاشتراكات والخطط",
+      planHeader: "الخطة",
+      priceHeader: "السعر",
+      featuresHeader: "الميزات",
+      basicPlan: "أساسية",
+      basicPrice: "19 ريال/شهر",
+      basicFeatures: "تحليل منطقة واحدة",
+      advancedPlan: "متقدمة",
+      advancedPrice: "49 ريال/شهر",
+      advancedFeatures: "تحليلات + توصيات أسهم",
+      proPlan: "احترافية",
+      proPrice: "99 ريال/شهر",
+      proFeatures: "مستشار مباشر + تقارير مفصلة",
+      stocksTitle: "تحليلات الأسهم",
+      contactTitle: "تواصل معنا",
+      contactDesc: "هل لديك استفسار أو تريد استشارة استثمارية؟ تواصل معنا عبر:",
+      emailLabel: "البريد الإلكتروني",
+      phoneLabel: "الهاتف",
+      socialLabel: "عبر شبكات التواصل الاجتماعي",
+    },
+    en: {
+      home: "Home",
+      areas: "Investment Areas",
+      plans: "Subscriptions",
+      stocks: "Stock Analysis",
+      contact: "Contact Us",
+      headerTitle: "Smart Invest | Saudi Smart Investment",
+      headerSubtitle: "Start your investment journey with confidence 🇸🇦",
+      heroTitle: "Invest in the Future, with Saudi Confidence",
+      heroDesc: "Smart solutions for investing in real estate, projects, and stocks based on your capital and region",
+      heroBtn: "Get Started",
+      areasTitle: "Investment Areas",
+      area1: "Riyadh - Residential & Commercial Projects",
+      area2: "NEOM - Future Tech & Tourism",
+      area3: "Jeddah - Maritime & Hospitality Sector",
+      area4: "Dammam - Industry & Energy",
+      area5: "Mecca - Urban & Service Projects",
+      area6: "Khobar - Industrial & Commercial Investments",
+      plansTitle: "Subscriptions & Plans",
+      planHeader: "Plan",
+      priceHeader: "Price",
+      featuresHeader: "Features",
+      basicPlan: "Basic",
+      basicPrice: "19 SAR/month",
+      basicFeatures: "Single Area Analysis",
+      advancedPlan: "Advanced",
+      advancedPrice: "49 SAR/month",
+      advancedFeatures: "Analysis + Stock Recommendations",
+      proPlan: "Professional",
+      proPrice: "99 SAR/month",
+      proFeatures: "Direct Consultant + Detailed Reports",
+      stocksTitle: "Stock Analysis",
+      contactTitle: "Contact Us",
+      contactDesc: "Have a question or want investment advice? Contact us via:",
+      emailLabel: "Email",
+      phoneLabel: "Phone",
+      socialLabel: "On Social Media",
+    }
+  };
+
+  let currentLang = "ar";
+  const langSwitchBtn = document.getElementById("lang-switch");
+
+  function updateLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+    // نصوص يتم تغييرها حسب اللغة
+    document.querySelectorAll("[data-key]").forEach(el => {
+      const key = el.getAttribute("data-key");
+      if (translations[lang][key]) {
+        el.textContent = translations[lang][key];
+      }
+    });
+
+    // تحديث روابط التنقل (اتجاه النص)
+    document.querySelectorAll(".nav-link").forEach(link => {
+      const key = link.getAttribute("data-key");
+      if (translations[lang][key]) {
+        link.textContent = translations[lang][key];
+      }
+    });
+
+    // تحديث زر اللغة
+    langSwitchBtn.textContent = lang === "ar" ? "English" : "العربية";
+  }
+
+  langSwitchBtn.addEventListener("click", () => {
+    updateLanguage(currentLang === "ar" ? "en" : "ar");
+  });
+
+  // ابدأ بالعربية
+  updateLanguage("ar");
+</script>
+
+</body>
+</html>
