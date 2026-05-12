@@ -3,512 +3,678 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Smart Invest | الاستثمار الذكي السعودي</title>
-<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700&display=swap" rel="stylesheet" />
+<title> سهلناها | Sahlnaha</title>
+<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet" />
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 <style>
   :root {
     --green-main: #006c4c;
     --green-dark: #004d36;
+    --green-soft: #e8f3ef;
     --gold: #c8a165;
-    --background-light: #f9f9f9;
-    --text-dark: #1e1e1e;
+    --gold-dark: #a47745;
+    --background: #f4f6f5;
+    --surface: #ffffff;
+    --text: #1a1f1d;
+    --text-muted: #5a6560;
     --footer-bg: #002920;
-    --pattern-color: #c8a165;
+    --shadow-sm: 0 2px 8px rgba(0, 46, 33, 0.06);
+    --shadow-md: 0 8px 30px rgba(0, 46, 33, 0.1);
+    --radius: 14px;
+    --radius-lg: 22px;
+    --max: 1080px;
   }
-  * {
-    box-sizing: border-box;
-  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
   body {
     margin: 0;
-    font-family: "Almarai", sans-serif;
-    background-color: var(--background-light);
-    color: var(--text-dark);
-    scroll-behavior: smooth;
-    line-height: 1.6;
-    direction: rtl;
+    font-family: "Almarai", system-ui, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
   }
+
+  .container {
+    width: min(100% - 32px, var(--max));
+    margin-inline: auto;
+  }
+
+  /* Nav */
   nav {
-    background-color: rgba(0, 77, 54, 0.9);
-    backdrop-filter: blur(6px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    color: white;
-    font-weight: 700;
     position: sticky;
     top: 0;
-    z-index: 999;
-    transition: background-color 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 14px 24px;
+    background: linear-gradient(180deg, rgba(0, 77, 54, 0.96), rgba(0, 77, 54, 0.88));
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(200, 161, 101, 0.25);
+    color: #fff;
   }
-  nav a {
-    color: white;
+
+  .nav-brand {
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    color: #fff;
     text-decoration: none;
-    margin: 0 12px;
-    font-size: 16px;
-    transition: color 0.3s;
+    white-space: nowrap;
   }
-  nav a:hover {
+  .nav-brand span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 8px;
+  }
+
+  nav a.nav-link {
+    color: rgba(255, 255, 255, 0.92);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 999px;
+    transition: background 0.2s, color 0.2s;
+  }
+  nav a.nav-link:hover {
+    background: rgba(200, 161, 101, 0.2);
     color: var(--gold);
   }
-  nav .socials a {
-    margin: 0 8px;
-    font-size: 18px;
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
   }
+
+  .nav-actions a {
+    color: #fff;
+    text-decoration: none;
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 1.1rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-actions a:hover {
+    background: rgba(200, 161, 101, 0.35);
+    transform: translateY(-2px);
+  }
+
   .lang-switch {
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-    padding: 5px 12px;
-    border-radius: 5px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    padding: 8px 16px;
+    border-radius: 999px;
     cursor: pointer;
-    font-size: 14px;
-    margin-left: 12px;
-    transition: background-color 0.3s;
-    user-select: none;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
   }
   .lang-switch:hover {
-    background-color: var(--gold);
+    background: var(--gold);
     color: var(--green-dark);
     border-color: var(--gold);
   }
+
+  /* Header strip */
   header {
-    background: linear-gradient(to left, var(--green-main), var(--green-dark));
-    color: white;
-    padding: 80px 20px;
+    background: linear-gradient(135deg, var(--green-main), var(--green-dark));
+    color: #fff;
+    padding: 48px 20px 40px;
     text-align: center;
     position: relative;
+    overflow: hidden;
   }
   header::before {
     content: "";
     position: absolute;
-    top: 10px;
-    left: 20px;
-    width: 100px;
-    height: 100px;
-    background:
-      repeating-conic-gradient(var(--pattern-color) 0deg 10deg, transparent 10deg 20deg);
-    border-radius: 50%;
-    opacity: 0.15;
-    z-index: 0;
+    inset: -40% -20%;
+    background: radial-gradient(circle at 20% 30%, rgba(200, 161, 101, 0.18), transparent 45%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.06), transparent 40%);
+    pointer-events: none;
   }
   header h1 {
-    font-size: 42px;
-    margin-bottom: 12px;
+    font-size: clamp(1.55rem, 4vw, 2.35rem);
+    margin: 0 0 10px;
+    font-weight: 800;
     position: relative;
     z-index: 1;
+    letter-spacing: 0.02em;
   }
   header p {
-    font-size: 20px;
-    opacity: 0.9;
+    margin: 0;
+    font-size: clamp(1rem, 2.2vw, 1.15rem);
+    opacity: 0.95;
     position: relative;
     z-index: 1;
+    color: rgba(255, 255, 255, 0.92);
   }
+
+  /* Hero */
   .hero {
+    position: relative;
+    padding: clamp(72px, 14vw, 120px) 20px clamp(64px, 10vw, 96px);
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Riyadh_Skyline.jpg/1280px-Riyadh_Skyline.jpg");
     background-size: cover;
     background-position: center;
-    padding: 140px 20px 100px;
-    text-align: center;
-    color: white;
-    position: relative;
-    overflow: hidden;
   }
   .hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background:
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 6px,
-        var(--pattern-color) 6px,
-        var(--pattern-color) 7px
-      );
-    opacity: 0.12;
+    background: linear-gradient(180deg, rgba(0, 36, 26, 0.55) 0%, rgba(0, 77, 54, 0.82) 100%);
     pointer-events: none;
   }
-  .hero h2 {
-    font-size: 44px;
-    margin-bottom: 16px;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: inline-block;
-    padding: 20px 36px;
-    border-radius: 12px;
-    animation: fadeInDown 1.5s ease;
-    font-weight: 700;
-    letter-spacing: 0.03em;
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 10px,
+      rgba(200, 161, 101, 0.04) 10px,
+      rgba(200, 161, 101, 0.04) 11px
+    );
+    pointer-events: none;
+  }
+
+  .hero-inner {
     position: relative;
     z-index: 1;
-  }
-  .hero p {
-    font-size: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 14px 36px;
-    display: inline-block;
-    border-radius: 10px;
-    animation: fadeInUp 2s ease;
-    max-width: 700px;
+    max-width: 720px;
     margin: 0 auto;
-    line-height: 1.6;
-    color: #f0f0f0;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    text-shadow: 0 0 4px rgba(0,0,0,0.5);
-    position: relative;
-    z-index: 1;
   }
+
+  .hero h2 {
+    font-size: clamp(1.45rem, 4.2vw, 2.25rem);
+    margin: 0 0 16px;
+    font-weight: 800;
+    line-height: 1.35;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero p {
+    margin: 0 auto 28px;
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.94);
+    max-width: 640px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  }
+
   .btn-primary {
-    display: inline-block;
-    background-color: var(--gold);
-    color: white;
-    padding: 14px 40px;
-    font-weight: 700;
-    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: #fff;
+    padding: 14px 36px;
+    font-weight: 800;
+    border-radius: 999px;
     text-decoration: none;
-    margin-top: 30px;
-    transition: background-color 0.3s;
-    font-size: 18px;
-    position: relative;
-    z-index: 1;
+    font-size: 1rem;
+    box-shadow: 0 10px 28px rgba(164, 119, 69, 0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
   .btn-primary:hover {
-    background-color: #a47745;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px rgba(164, 119, 69, 0.45);
   }
+
+  /* Sections */
   section {
-    padding: 70px 20px;
+    padding: clamp(56px, 8vw, 88px) 20px;
+  }
+
+  .section-head {
     text-align: center;
-    position: relative;
+    margin-bottom: 40px;
   }
+
   section h2 {
-    color: var(--green-main);
-    margin-bottom: 28px;
-    font-size: 32px;
-    font-weight: 700;
-    position: relative;
-  }
-  section h2::after {
-    content: "";
-    width: 60px;
-    height: 6px;
-    background: var(--gold);
-    display: block;
-    margin: 8px auto 0;
-    border-radius: 5px;
-    box-shadow: 0 0 8px var(--gold);
-  }
-  section p {
-    max-width: 720px;
-    margin: 0 auto 30px;
-    font-size: 18px;
-    line-height: 1.8;
-    color: var(--text-dark);
-  }
-  ul.invest-areas {
-    max-width: 800px;
-    margin: 0 auto 50px;
-    list-style-type: none;
-    padding: 0;
-    font-weight: 600;
-  }
-  ul.invest-areas li {
-    background: white;
-    margin-bottom: 18px;
-    padding: 18px 25px;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    font-size: 20px;
-    text-align: right;
-    cursor: default;
-    transition: transform 0.3s ease, background-color 0.3s, color 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  ul.invest-areas li:hover {
-    transform: translateX(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    background-color: var(--gold);
     color: var(--green-dark);
+    margin: 0 0 12px;
+    font-size: clamp(1.35rem, 3vw, 1.85rem);
+    font-weight: 800;
   }
-  ul.invest-areas li::before {
+
+  .section-head p {
+    margin: 0 auto;
+    max-width: 640px;
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  .title-line {
+    width: 56px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+    border-radius: 999px;
+    margin: 0 auto 16px;
+    box-shadow: 0 2px 12px rgba(200, 161, 101, 0.45);
+  }
+
+  /* Areas grid */
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .areas-grid li {
+    background: var(--surface);
+    padding: 22px 22px 22px 52px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    font-weight: 700;
+    font-size: 1.02rem;
+    text-align: start;
+    position: relative;
+    border: 1px solid rgba(0, 108, 76, 0.08);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  }
+  [dir="ltr"] .areas-grid li { padding: 22px 52px 22px 22px; }
+
+  .areas-grid li:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(200, 161, 101, 0.45);
+  }
+
+  .areas-grid li::before {
     content: "✦";
-    color: var(--gold);
     position: absolute;
-    left: 15px;
+    inset-inline-start: 18px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 24px;
+    color: var(--gold);
+    font-size: 1.35rem;
   }
+
+  /* Plans table */
+  .table-wrap {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    border: 1px solid rgba(0, 108, 76, 0.1);
+  }
+
   table.subscriptions {
-    width: 90%;
-    max-width: 800px;
-    margin: 0 auto 40px;
+    width: 100%;
     border-collapse: collapse;
     font-weight: 600;
   }
+
   table.subscriptions th,
   table.subscriptions td {
-    border: 1px solid var(--green-dark);
-    padding: 15px 20px;
-    font-size: 18px;
+    padding: 18px 20px;
+    font-size: 0.98rem;
+    text-align: start;
+    border-bottom: 1px solid rgba(0, 77, 54, 0.12);
   }
-  table.subscriptions th {
-    background-color: var(--green-main);
-    color: white;
+
+  table.subscriptions thead th {
+    background: linear-gradient(135deg, var(--green-main), var(--green-dark));
+    color: #fff;
+    font-weight: 800;
+    border: none;
   }
-  table.subscriptions tr:nth-child(even) {
-    background-color: #f2f2f2;
+
+  table.subscriptions tbody tr:last-child td {
+    border-bottom: none;
   }
-  /* Stocks section */
-  #stocks .stock-card {
-    max-width: 800px;
-    margin: 0 auto 30px;
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.1);
-    padding: 20px 25px;
+
+  table.subscriptions tbody tr:nth-child(even) {
+    background: var(--green-soft);
+  }
+
+  table.subscriptions tbody tr:hover td {
+    background: rgba(200, 161, 101, 0.12);
+  }
+
+  /* Stocks */
+  #stocks .stock-list {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #stocks .stock-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 20px 22px;
+    display: flex;
     align-items: center;
-    font-weight: 600;
-    transition: transform 0.3s ease;
-    cursor: default;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    border: 1px solid rgba(0, 108, 76, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
+
   #stocks .stock-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 10px 22px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
   }
+
+  #stocks .stock-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  #stocks .stock-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--green-main), var(--green-dark));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
   #stocks .stock-name {
-    font-size: 22px;
+    font-size: 1.05rem;
     color: var(--green-dark);
+    font-weight: 800;
   }
+
+  #stocks .stock-ticker {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  #stocks .stock-right {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
   #stocks .stock-price {
-    font-size: 20px;
-    color: var(--gold);
+    font-size: 1.05rem;
+    color: var(--gold-dark);
+    font-weight: 800;
   }
+
   #stocks .stock-change {
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 0.95rem;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 999px;
   }
+
   #stocks .stock-change.positive {
-    color: #2ecc71;
+    color: #0d7a4a;
+    background: rgba(46, 204, 113, 0.15);
   }
+
   #stocks .stock-change.negative {
-    color: #e74c3c;
+    color: #c0392b;
+    background: rgba(231, 76, 60, 0.12);
   }
-  footer {
-    background-color: var(--footer-bg);
-    color: white;
+
+  /* Contact */
+  .contact-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0, 108, 76, 0.1);
+    max-width: 640px;
+    margin: 0 auto;
     text-align: center;
-    padding: 22px 16px;
-    margin-top: 60px;
-    font-size: 15px;
-    font-weight: 500;
-    user-select: none;
   }
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  .contact-card p {
+    margin: 0 0 12px;
+    color: var(--text);
+    font-size: 1rem;
   }
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  .contact-card a {
+    color: var(--green-main);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
   }
-  /* Responsive */
+  .contact-card a:hover {
+    color: var(--gold-dark);
+    border-bottom-color: var(--gold);
+  }
+
+  .contact-links {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 18px;
+  }
+
+  footer {
+    background: var(--footer-bg);
+    color: rgba(255, 255, 255, 0.88);
+    text-align: center;
+    padding: 28px 20px;
+    margin-top: 0;
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+  footer strong { color: var(--gold); }
+
   @media (max-width: 768px) {
-    nav {
-      flex-wrap: wrap;
-      padding: 12px 16px;
-      font-size: 14px;
-    }
-    nav a {
-      margin: 6px 8px;
-    }
-    header h1 {
-      font-size: 28px;
-    }
-    header p {
-      font-size: 16px;
-    }
-    .hero {
-      padding: 120px 16px 80px;
-    }
-    .hero h2 {
-      font-size: 28px;
-      padding: 10px 16px;
-    }
-    .hero p {
-      font-size: 16px;
-      padding: 8px 14px;
-    }
-    .btn-primary {
-      padding: 10px 28px;
-      font-size: 16px;
-    }
-    section h2 {
-      font-size: 24px;
-      margin-bottom: 18px;
-    }
-    section p {
-      font-size: 16px;
-      max-width: 100%;
-    }
-    ul.invest-areas li {
-      font-size: 18px;
-      padding: 14px 18px;
-    }
+    nav { padding: 12px 16px; }
+    .nav-links { width: 100%; justify-content: center; }
+    .nav-actions { width: 100%; justify-content: center; }
     table.subscriptions th,
-    table.subscriptions td {
-      font-size: 16px;
-      padding: 10px 14px;
-    }
-    #stocks .stock-card {
-      flex-direction: column;
-      gap: 8px;
-      font-size: 16px;
-    }
-    #stocks .stock-name {
-      font-size: 18px;
-    }
-    #stocks .stock-price {
-      font-size: 16px;
-    }
-    #stocks .stock-change {
-      font-size: 14px;
-    }
+    table.subscriptions td { padding: 12px 14px; font-size: 0.9rem; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <div>
+  <a href="#home" class="nav-brand">Smart <span>Invest</span></a>
+  <div class="nav-links">
     <a href="#home" class="nav-link" data-key="home">الرئيسية</a>
     <a href="#areas" class="nav-link" data-key="areas">المناطق الاستثمارية</a>
     <a href="#plans" class="nav-link" data-key="plans">الاشتراكات</a>
     <a href="#stocks" class="nav-link" data-key="stocks">تحليلات الأسهم</a>
     <a href="#contact" class="nav-link" data-key="contact">تواصل معنا</a>
   </div>
-  <div>
-    <a href="https://twitter.com" target="_blank" title="تويتر">🐦</a>
-    <a href="https://instagram.com" target="_blank" title="انستقرام">📸</a>
-    <a href="https://youtube.com" target="_blank" title="يوتيوب">▶️</a>
-    <button class="lang-switch" id="lang-switch">English</button>
+  <div class="nav-actions">
+    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" title="X">𝕏</a>
+    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">◎</a>
+    <button type="button" class="lang-switch" id="lang-switch">English</button>
   </div>
 </nav>
 
 <header id="home" data-aos="fade-down">
-  <h1 data-key="headerTitle">Smart Invest | الاستثمار الذكي السعودي</h1>
-  <p data-key="headerSubtitle">ابدأ رحلتك الاستثمارية بثقة 🇸🇦</p>
+  <div class="container">
+    <h1 data-key="headerTitle">سهلناها | Sahlnaha</h1>
+    <p data-key="headerSubtitle"> خايف تبدأ رحلتك؟ مع سهلناها تبدأ نقطتك الأولى 🇸🇦</p>
+  </div>
 </header>
 
 <div class="hero" data-aos="fade-up">
-  <h2 data-key="heroTitle">استثمر في المستقبل، بثقة سعودية</h2>
-  <p data-key="heroDesc">حلول ذكية للاستثمار في العقارات، المشاريع، والأسهم حسب رأس مالك والمنطقة</p>
-  <a href="#plans" class="btn-primary" data-key="heroBtn">ابدأ الآن</a>
+  <div class="hero-inner container">
+    <h2 data-key="heroTitle">استثمر في المستقبل، بثقة بدون خوف</h2>
+    <p data-key="heroDesc">حلول ذكية للاستثمار في العقارات، المشاريع، والأسهم حسب رأس مالك والمنطقة</p>
+    <a href="#plans" class="btn-primary" data-key="heroBtn">ابدأ الآن</a>
+  </div>
 </div>
 
 <section id="areas" data-aos="fade-up">
-  <h2 data-key="areasTitle">المناطق الاستثمارية</h2>
-  <ul class="invest-areas" id="areas-list">
-    <li data-key="area1">الرياض - مشاريع سكنية وتجارية</li>
-    <li data-key="area2">نيوم - تقنيات المستقبل والسياحة</li>
-    <li data-key="area3">جدة - القطاع البحري والضيافة</li>
-    <li data-key="area4">الدمام - الصناعة والطاقة</li>
-    <li data-key="area5">مكة المكرمة - مشاريع عمرانية وخدمية</li>
-    <li data-key="area6">الخبر - استثمارات صناعية وتجارية</li>
-  </ul>
+  <div class="container">
+    <div class="section-head">
+      <div class="title-line" aria-hidden="true"></div>
+      <h2 data-key="areasTitle">المناطق الاستثمارية</h2>
+    </div>
+    <ul class="areas-grid" id="areas-list">
+      <li data-key="area1">الرياض - مشاريع سكنية وتجارية</li>
+      <li data-key="area2">نيوم - تقنيات المستقبل والسياحة</li>
+      <li data-key="area3">جدة - القطاع البحري والضيافة</li>
+      <li data-key="area4">الدمام - الصناعة والطاقة</li>
+      <li data-key="area5">مكة المكرمة - مشاريع عمرانية وخدمية</li>
+      <li data-key="area6">الخبر - استثمارات صناعية وتجارية</li>
+    </ul>
+  </div>
 </section>
 
-<section id="plans" data-aos="fade-up">
-  <h2 data-key="plansTitle">الاشتراكات والخطط</h2>
-  <table class="subscriptions" aria-label="Subscription Plans">
-    <thead>
-      <tr>
-        <th data-key="planHeader">الخطة</th>
-        <th data-key="priceHeader">السعر</th>
-        <th data-key="featuresHeader">الميزات</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-key="basicPlan">أساسية</td>
-        <td data-key="basicPrice">19 ريال/شهر</td>
-        <td data-key="basicFeatures">تحليل منطقة واحدة</td>
-      </tr>
-      <tr>
-        <td data-key="advancedPlan">متقدمة</td>
-        <td data-key="advancedPrice">49 ريال/شهر</td>
-        <td data-key="advancedFeatures">تحليلات + توصيات أسهم</td>
-      </tr>
-      <tr>
-        <td data-key="proPlan">احترافية</td>
-        <td data-key="proPrice">99 ريال/شهر</td>
-        <td data-key="proFeatures">مستشار مباشر + تقارير مفصلة</td>
-      </tr>
-    </tbody>
-  </table>
+<section id="plans" data-aos="fade-up" style="background: linear-gradient(180deg, transparent, rgba(0,108,76,0.04));">
+  <div class="container">
+    <div class="section-head">
+      <div class="title-line" aria-hidden="true"></div>
+      <h2 data-key="plansTitle">الاشتراكات والخطط</h2>
+    </div>
+    <div class="table-wrap">
+      <table class="subscriptions" aria-label="Subscription Plans">
+        <thead>
+          <tr>
+            <th data-key="planHeader">الخطة</th>
+            <th data-key="priceHeader">السعر</th>
+            <th data-key="featuresHeader">الميزات</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-key="basicPlan">أساسية</td>
+            <td data-key="basicPrice">20 ريال/شهر</td>
+            <td data-key="basicFeatures">تحليل منطقة واحدة</td>
+          </tr>
+          <tr>
+            <td data-key="advancedPlan">متقدمة</td>
+            <td data-key="advancedPrice">50 ريال/شهر</td>
+            <td data-key="advancedFeatures">تحليلات + توصيات أسهم</td>
+          </tr>
+          <tr>
+            <td data-key="proPlan">احترافية</td>
+            <td data-key="proPrice">100 ريال/شهر</td>
+            <td data-key="proFeatures">مستشار مباشر + تقارير مفصلة</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
 
 <section id="stocks" data-aos="fade-up">
-  <h2 data-key="stocksTitle">تحليلات الأسهم</h2>
-  <div class="stock-card">
-    <div class="stock-name">شركة أرامكو (2222)</div>
-    <div class="stock-price">35.50 ريال</div>
-    <div class="stock-change positive">+1.25%</div>
-  </div>
-  <div class="stock-card">
-    <div class="stock-name">شركة سابك (2010)</div>
-    <div class="stock-price">110.20 ريال</div>
-    <div class="stock-change negative">-0.85%</div>
-  </div>
-  <div class="stock-card">
-    <div class="stock-name">شركة الاتصالات (7010)</div>
-    <div class="stock-price">120.75 ريال</div>
-    <div class="stock-change positive">+0.65%</div>
+  <div class="container">
+    <div class="section-head">
+      <div class="title-line" aria-hidden="true"></div>
+      <h2 data-key="stocksTitle">تحليلات الأسهم</h2>
+      <p data-key="stocksSubtitle">نموذج توضيحي — يمكن ربطه لاحقاً ببيانات السوق المباشرة</p>
+    </div>
+    <div class="stock-list">
+      <div class="stock-card">
+        <div class="stock-left">
+          <div class="stock-badge">2222</div>
+          <div>
+            <div class="stock-name" data-key="stock1Name">شركة أرامكو</div>
+            <div class="stock-ticker">Tadawul · 2222</div>
+          </div>
+        </div>
+        <div class="stock-right">
+          <div class="stock-price">35.50 <span data-key="currency">ريال</span></div>
+          <div class="stock-change positive" data-key="stock1Change">+1.25%</div>
+        </div>
+      </div>
+      <div class="stock-card">
+        <div class="stock-left">
+          <div class="stock-badge">2010</div>
+          <div>
+            <div class="stock-name" data-key="stock2Name">شركة سابك</div>
+            <div class="stock-ticker">Tadawul · 2010</div>
+          </div>
+        </div>
+        <div class="stock-right">
+          <div class="stock-price">110.20 <span data-key="currency">ريال</span></div>
+          <div class="stock-change negative" data-key="stock2Change">-0.85%</div>
+        </div>
+      </div>
+      <div class="stock-card">
+        <div class="stock-left">
+          <div class="stock-badge">7010</div>
+          <div>
+            <div class="stock-name" data-key="stock3Name">شركة الاتصالات</div>
+            <div class="stock-ticker">Tadawul · 7010</div>
+          </div>
+        </div>
+        <div class="stock-right">
+          <div class="stock-price">120.75 <span data-key="currency">ريال</span></div>
+          <div class="stock-change positive" data-key="stock3Change">+0.65%</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="contact" data-aos="fade-up">
-  <h2 data-key="contactTitle">تواصل معنا</h2>
-  <p data-key="contactDesc">هل لديك استفسار أو تريد استشارة استثمارية؟ تواصل معنا عبر:</p>
-  <p>📧 <span data-key="emailLabel">البريد الإلكتروني</span>: info@smartinvest.sa</p>
-  <p>📞 <span data-key="phoneLabel">الهاتف</span>: 9200 123 456</p>
-  <p>🌐 <span data-key="socialLabel">عبر شبكات التواصل الاجتماعي</span>:</p>
-  <p>
-    <a href="https://twitter.com" target="_blank" title="تويتر">🐦 تويتر</a> | 
-    <a href="https://instagram.com" target="_blank" title="انستقرام">📸 انستقرام</a> | 
-    <a href="https://youtube.com" target="_blank" title="يوتيوب">▶️ يوتيوب</a>
-  </p>
+<section id="contact" data-aos="fade-up" style="padding-bottom: 72px;">
+  <div class="container">
+    <div class="section-head">
+      <div class="title-line" aria-hidden="true"></div>
+      <h2 data-key="contactTitle">تواصل معنا</h2>
+    </div>
+    <div class="contact-card">
+      <p data-key="contactDesc">هل لديك استفسار أو تريد استشارة استثمارية؟ تواصل معنا عبر:</p>
+      <p> <span data-key="emailLabel">البريد الإلكتروني</span>: <a href="mailto:info@smartinvest.sa">info@smartinvest.sa</a></p>
+      <p> <span data-key="phoneLabel">الهاتف</span>: <a href="tel:+9669200123456">9200 123 456</a></p>
+      <p data-key="socialIntro"> عبر شبكات التواصل الاجتماعي:</p>
+      <div class="contact-links">
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" data-key="twLabel">تويتر</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" data-key="igLabel">انستقرام</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
-  &copy; 2025 Smart Invest. جميع الحقوق محفوظة.<br />
-  تصميم احترافي على الطراز السعودي | يدعم التحول الوطني 2030
+  <div class="container">
+    &copy; <span id="year"></span> <strong>Smart Invest</strong>. <span data-key="footerRights">جميع الحقوق محفوظة.</span><br />
+    <span data-key="footerTagline">         </span>
+  </div>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({
-    duration: 1100,
-    once: true,
-  });
+  AOS.init({ duration: 900, once: true, offset: 40 });
+  document.getElementById("year").textContent = new Date().getFullYear();
 
-  // ترجمات النصوص العربية والإنجليزية
   const translations = {
     ar: {
       home: "الرئيسية",
@@ -516,7 +682,7 @@
       plans: "الاشتراكات",
       stocks: "تحليلات الأسهم",
       contact: "تواصل معنا",
-      headerTitle: "Smart Invest | الاستثمار الذكي السعودي",
+      headerTitle: "سهلناها | Sahlnaha",
       headerSubtitle: "ابدأ رحلتك الاستثمارية بثقة 🇸🇦",
       heroTitle: "استثمر في المستقبل، بثقة سعودية",
       heroDesc: "حلول ذكية للاستثمار في العقارات، المشاريع، والأسهم حسب رأس مالك والمنطقة",
@@ -533,20 +699,31 @@
       priceHeader: "السعر",
       featuresHeader: "الميزات",
       basicPlan: "أساسية",
-      basicPrice: "19 ريال/شهر",
+      basicPrice: "20 ريال/شهر",
       basicFeatures: "تحليل منطقة واحدة",
       advancedPlan: "متقدمة",
-      advancedPrice: "49 ريال/شهر",
+      advancedPrice: "50 ريال/شهر",
       advancedFeatures: "تحليلات + توصيات أسهم",
       proPlan: "احترافية",
-      proPrice: "99 ريال/شهر",
+      proPrice: "100 ريال/شهر",
       proFeatures: "مستشار مباشر + تقارير مفصلة",
       stocksTitle: "تحليلات الأسهم",
+      
+      stock1Name: "شركة أرامكو",
+      stock2Name: "شركة سابك",
+      stock3Name: "شركة الاتصالات",
+      currency: "ريال",
+      stock1Change: "+1.25%",
+      stock2Change: "-0.85%",
+      stock3Change: "+0.65%",
       contactTitle: "تواصل معنا",
       contactDesc: "هل لديك استفسار أو تريد استشارة استثمارية؟ تواصل معنا عبر:",
       emailLabel: "البريد الإلكتروني",
       phoneLabel: "الهاتف",
-      socialLabel: "عبر شبكات التواصل الاجتماعي",
+      socialIntro: " عبر شبكات التواصل الاجتماعي:",
+      twLabel: "اكس",
+      igLabel: "انستقرام",
+      footerRights: "جميع الحقوق محفوظة.",
     },
     en: {
       home: "Home",
@@ -554,38 +731,49 @@
       plans: "Subscriptions",
       stocks: "Stock Analysis",
       contact: "Contact Us",
-      headerTitle: "Smart Invest | Saudi Smart Investment",
-      headerSubtitle: "Start your investment journey with confidence 🇸🇦",
-      heroTitle: "Invest in the Future, with Saudi Confidence",
+      headerTitle: "Sahlnaha | With Sahlnaha, We Made It Easier",
+      headerSubtitle: "Start your investment journey without worrying to support you and your future.",
+      heroTitle: "Invest in the Future",
       heroDesc: "Smart solutions for investing in real estate, projects, and stocks based on your capital and region",
       heroBtn: "Get Started",
       areasTitle: "Investment Areas",
-      area1: "Riyadh - Residential & Commercial Projects",
-      area2: "NEOM - Future Tech & Tourism",
-      area3: "Jeddah - Maritime & Hospitality Sector",
-      area4: "Dammam - Industry & Energy",
-      area5: "Mecca - Urban & Service Projects",
-      area6: "Khobar - Industrial & Commercial Investments",
+      area1: "Riyadh — Residential & commercial projects",
+      area2: "NEOM — Future tech & tourism",
+      area3: "Jeddah — Maritime & hospitality",
+      area4: "Dammam — Industry & energy",
+      area5: "Makkah — Urban & service projects",
+      area6: "Khobar — Industrial & commercial investments",
       plansTitle: "Subscriptions & Plans",
       planHeader: "Plan",
       priceHeader: "Price",
       featuresHeader: "Features",
       basicPlan: "Basic",
-      basicPrice: "19 SAR/month",
-      basicFeatures: "Single Area Analysis",
+      basicPrice: "20 SAR / month",
+      basicFeatures: "Single-area analysis",
       advancedPlan: "Advanced",
-      advancedPrice: "49 SAR/month",
-      advancedFeatures: "Analysis + Stock Recommendations",
+      advancedPrice: "50 SAR / month",
+      advancedFeatures: "Analysis + stock recommendations",
       proPlan: "Professional",
-      proPrice: "99 SAR/month",
-      proFeatures: "Direct Consultant + Detailed Reports",
+      proPrice: "100 SAR / month",
+      proFeatures: "Direct advisor + detailed reports",
       stocksTitle: "Stock Analysis",
+      stocksSubtitle: "Demo snapshot — can be connected to live market data later",
+      stock1Name: "Saudi Aramco",
+      stock2Name: "SABIC",
+      stock3Name: "stc",
+      currency: "SAR",
+      stock1Change: "+1.25%",
+      stock2Change: "-0.85%",
+      stock3Change: "+0.65%",
       contactTitle: "Contact Us",
-      contactDesc: "Have a question or want investment advice? Contact us via:",
+      contactDesc: "Have a question or want investment advice? Reach us via:",
       emailLabel: "Email",
       phoneLabel: "Phone",
-      socialLabel: "On Social Media",
-    }
+      socialIntro: " On social media:",
+      twLabel: "X (Twitter)",
+      igLabel: "Instagram",
+      footerRights: "All rights reserved.",
+    },
   };
 
   let currentLang = "ar";
@@ -596,23 +784,12 @@
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
 
-    // نصوص يتم تغييرها حسب اللغة
-    document.querySelectorAll("[data-key]").forEach(el => {
+    document.querySelectorAll("[data-key]").forEach((el) => {
       const key = el.getAttribute("data-key");
-      if (translations[lang][key]) {
-        el.textContent = translations[lang][key];
-      }
+      const text = translations[lang][key];
+      if (text !== undefined) el.textContent = text;
     });
 
-    // تحديث روابط التنقل (اتجاه النص)
-    document.querySelectorAll(".nav-link").forEach(link => {
-      const key = link.getAttribute("data-key");
-      if (translations[lang][key]) {
-        link.textContent = translations[lang][key];
-      }
-    });
-
-    // تحديث زر اللغة
     langSwitchBtn.textContent = lang === "ar" ? "English" : "العربية";
   }
 
@@ -620,9 +797,7 @@
     updateLanguage(currentLang === "ar" ? "en" : "ar");
   });
 
-  // ابدأ بالعربية
   updateLanguage("ar");
 </script>
-
 </body>
 </html>
